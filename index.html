@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>te gusta lo que ves</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background-color: #0e1621;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.5;
+      user-select: none;
+    }
+
+    .main-layout {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 18px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .side-column {
+      width: 160px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .banner {
+      background-color: #1a2733;
+      border: 1px solid #2b3a4a;
+      border-radius: 12px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .banner:hover {
+      border-color: #2aabee;
+      transform: translateY(-2px);
+    }
+    .banner a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: 12px 10px;
+    }
+    .banner-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #2aabee;
+      margin-bottom: 6px;
+    }
+    .banner-text {
+      font-size: 12px;
+      color: #b0bec5;
+      line-height: 1.4;
+    }
+    .banner.ad {
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #1a2733, #15202b);
+    }
+
+    .container {
+      flex: 1;
+      max-width: 680px;
+      background-color: #17212b;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    .header {
+      background-color: #242f3d;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #0e1621;
+    }
+    .avatar {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, #2aabee, #229ed9);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold; font-size: 18px;
+    }
+    .header-info h3 { font-size: 16px; font-weight: 500; }
+    .header-info span { font-size: 13px; color: #8b9bab; }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      background: #000;
+      aspect-ratio: 16/9;
+    }
+    video, iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+      outline: none;
+    }
+
+    .content { padding: 20px; }
+    .content h2 { font-size: 18px; margin-bottom: 10px; }
+    .content p { font-size: 15px; color: #e0e0e0; margin-bottom: 20px; white-space: pre-wrap; }
+    
+    .download-section {
+      background-color: #1a2733;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 10px;
+    }
+    .download-section h3 {
+      font-size: 15px;
+      margin-bottom: 12px;
+      color: #2aabee;
+    }
+    .download-btn {
+      display: block;
+      background-color: #2aabee;
+      color: white;
+      text-align: center;
+      padding: 13px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 10px;
+      transition: background 0.2s;
+    }
+    .download-btn:hover { background-color: #229ed9; }
+    .download-btn.secondary {
+      background-color: #242f3d;
+      border: 1px solid #2b3a4a;
+    }
+    .download-btn.secondary:hover { background-color: #2b3a4a; }
+    
+    .footer-note {
+      text-align: center;
+      padding: 14px;
+      font-size: 13px;
+      color: #8b9bab;
+      border-top: 1px solid #0e1621;
+    }
+
+    .visits {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 2px 8px;
+      background: #1a2733;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #8b9bab;
+    }
+
+    @media (max-width: 1000px) {
+      .side-column { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-layout">
+
+    <!-- LADO IZQUIERDO -->
+    <div class="side-column">
+      <div class="banner ad">
+        <a href="https://tu-enlace-publicidad-1.com" target="_blank">
+          <div class="banner-title">Publicidad 1</div>
+          <div class="banner-text">Espacio para anuncio</div>
+        </a>
+      </div>
+      <div class="banner ad">
+        <a href="https://tu-enlace-publicidad-2.com" target="_blank">
+          <div class="banner-title">Publicidad 2</div>
+          <div class="banner-text">Espacio para anuncio</div>
+        </a>
+      </div>
+      <div class="banner ad">
+        <a href="https://tu-enlace-publicidad-3.com" target="_blank">
+          <div class="banner-title">Publicidad 3</div>
+          <div class="banner-text">Espacio para anuncio</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- CONTENIDO CENTRAL -->
+    <div class="container">
+      <div class="header">
+        <div class="avatar">srt</div>
+        <div class="header-info">
+          <h3 id="titulo">Título del video</h3>
+          <span id="categoria">#milf #blackccock #interracial #teen </span>
+          <span class="visits" id="visit-count">Visitas: ...</span>
+        </div>
+      </div>
+
+      <div class="video-wrapper" id="player-container">
+        <!-- Aquí se carga el video o el iframe -->
+      </div>
+
+      <div class="content">
+        <h2 id="titulo2">Título del video</h2>
+        <p id="descripcion">Descripción...</p>
+
+        <div class="download-section">
+          <h3>Descarga video completo</h3>
+          <a href=" https://exe.io/dijoserialaultimavez  " class="download-btn" target="_blank">
+            aqui
+          </a>
+          <a href="https://tu-enlace-de-pago-2.com" class="download-btn secondary" target="_blank">
+            Descargar 4K 
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        subtitulado por marco teran.. · <span id="visit-count-footer">Visitas: ...</span>
+      </div>
+    </div>
+
+    <!-- LADO DERECHO -->
+    <div class="side-column">
+      <div class="banner">
+        <a href="https://tu-enlace-peticiones.com" target="_blank">
+          <div class="banner-title">Peticiones</div>
+          <div class="banner-text">¿Quieres un video personalizado enviame un mensaje?</div>
+        </a>
+      </div>
+      <div class="banner">
+        <a href="https://tu-enlace-donaciones.com" target="_blank">
+          <div class="banner-title">Donaciones</div>
+          <div class="banner-text">Apoya el contenido</div>
+        </a>
+      </div>
+      <div class="banner">
+        <a href="https://tu-enlace-redes.com" target="_blank">
+          <div class="banner-title">Redes Sociales</div>
+          <div class="banner-text">Sígueme en Telegram</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // ========== CONFIGURA AQUÍ ==========
+    const config = {
+      titulo: "te gusta lo que ves ",
+      categoria: "milf, #incesto #teen  ",
+      descripcion: "#milf #incesto #tetonas #cougars .",
+      
+      // Enlace embed de Mixdrop / Filemoon / Doodstream
+      videoUrl: "https://playmogo.com/e/enlsevn1totm ",
+      
+      
+      // Solo sirve si usas enlace directo .mp4 (no con embed)
+      subtitlesUrl: "",
+
+      // Cambia estos nombres para que el contador sea solo tuyo
+      counterNamespace: "marcoteran-videos",
+      counterKey: "madrastra-001"
+    };
+
+    // Aplicar textos
+    document.getElementById('titulo').textContent = config.titulo;
+    document.getElementById('titulo2').textContent = config.titulo;
+    document.getElementById('categoria').textContent = config.categoria;
+    document.getElementById('descripcion').textContent = config.descripcion;
+
+    // ========== CONTADOR DE VISITAS ==========
+    (async function contadorVisitas() {
+      const params = new URLSearchParams(window.location.search);
+
+      // Si entras con ?nocount=1 → te marcas como dueño y no cuentas
+      if (params.get('nocount') === '1') {
+        localStorage.setItem('soy_dueno', '1');
+      }
+
+      const soyDueno = localStorage.getItem('soy_dueno') === '1';
+      const countEl = document.getElementById('visit-count');
+      const countEl2 = document.getElementById('visit-count-footer');
+
+      try {
+        let data;
+
+        if (soyDueno) {
+          // Solo lee el número, no suma
+          const res = await fetch(`https://api.countapi.xyz/get/${config.counterNamespace}/${config.counterKey}`);
+          data = await res.json();
+        } else {
+          // Visitante normal → suma 1
+          const res = await fetch(`https://api.countapi.xyz/hit/${config.counterNamespace}/${config.counterKey}`);
+          data = await res.json();
+        }
+
+        const total = data.value ?? 0;
+        countEl.textContent = `Visitas: ${total}`;
+        countEl2.textContent = `Visitas: ${total}`;
+      } catch (e) {
+        countEl.textContent = 'Visitas: —';
+        countEl2.textContent = 'Visitas: —';
+      }
+    })();
+
+    // ========== REPRODUCTOR ==========
+    const container = document.getElementById('player-container');
+    const url = config.videoUrl.trim();
+
+    // Se agregó playmogo y más dominios comunes de Doodstream
+    const isEmbed = /mxdrop|mixdrop|filemoon|doodstream|dood\.|playmogo|dsvplay|ds2play|myvidplay|streamtape|mp4upload|voe\.|vidmoly|streamwish/i.test(url);
+
+    if (isEmbed) {
+      container.innerHTML = `
+        <iframe 
+          src="${url}" 
+          allowfullscreen 
+          allow="autoplay; fullscreen; encrypted-media"
+          scrolling="no"
+          frameborder="0">
+        </iframe>
+      `;
+    } else {
+      container.innerHTML = `
+        <video 
+          id="video"
+          controls 
+          controlsList="nodownload noplaybackrate noremoteplayback"
+          disablePictureInPicture
+          oncontextmenu="return false;"
+          preload="metadata"
+          playsinline>
+          ${config.subtitlesUrl ? `<track kind="subtitles" srclang="es" label="Español" src="${config.subtitlesUrl.trim()}" default>` : ''}
+        </video>
+      `;
+      document.getElementById('video').src = url;
+    }
+
+    // Protecciones básicas
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if ((e.ctrlKey && (e.key === 's' || e.key === 'S')) || e.key === 'F12') {
+        e.preventDefault();
+        alert('La descarga gratuita está deshabilitada');
+      }
+    });
+  </script>
+</body>
+</html>
